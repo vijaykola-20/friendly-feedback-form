@@ -1,24 +1,86 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState, type FormEvent } from "react";
+import { useServerFn } from "@tanstack/react-start";
+import { submitFeedback } from "@/lib/feedback.functions";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Customer Support — We're here to help" },
+      { name: "description", content: "Send us your question or feedback and our support team will get back to you." },
+      { property: "og:title", content: "Customer Support — We're here to help" },
+      { property: "og:description", content: "Send us your question or feedback and our support team will get back to you." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  const send = useServerFn(submitFeedback);
+  const [status, setStatus] = useState<"idle" | "loading" | "done">("idle");
+  const [error, setError] = useState("");
+
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    setStatus("loading");
+    setError("");
+    try {
+      await send({
+        data: {
+          customerName: String(fd.get("name") ?? ""),
+          customerEmail: String(fd.get("email") ?? ""),
+          feedback: String(fd.get("feedback") ?? ""),
+        },
+      });
+      setStatus("done");
+    } catch {
+      setStatus("idle");
+      setError("Sorry, something went wrong. Please try again.");
+    }
+  }
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main className="support-bg flex min-h-screen items-center justify-center px-4 py-12">
+      <div className="w-full max-w-lg rounded-3xl bg-card p-8 shadow-soft sm:p-10">
+        {status === "done" ? (
+          <div className="py-8 text-center">
+            <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-3xl text-accent-foreground">✓</div>
+            <h1 className="font-display text-3xl text-foreground">Thank you!</h1>
+            <p className="mt-3 text-muted-foreground">We've received your message and will get back to you soon.</p>
+            <button onClick={() => setStatus("idle")} className="mt-8 rounded-full px-5 py-2 text-sm font-medium text-primary hover:bg-secondary">
+              Send another message
+            </button>
+          </div>
+        ) : (
+          <>
+            <h1 className="font-display text-4xl text-foreground">Customer Support</h1>
+            <p className="mt-2 text-muted-foreground">Got a question or a thought to share? We'd love to hear from you.</p>
+            <form onSubmit={onSubmit} className="mt-8 space-y-5">
+              <Field label="Your Name"><input name="name" required maxLength={100} className="field" /></Field>
+              <Field label="Your Email"><input name="email" type="email" required maxLength={255} className="field" /></Field>
+              <Field label="How can we help? Describe your issue or feedback">
+                <textarea name="feedback" required rows={6} maxLength={5000} className="field resize-none" />
+              </Field>
+              {error && <p className="text-sm text-destructive">{error}</p>}
+              <button type="submit" disabled={status === "loading"} className="w-full rounded-2xl bg-primary py-3.5 font-semibold text-primary-foreground transition hover:opacity-90 disabled:opacity-60">
+                {status === "loading" ? "Sending…" : "Submit"}
+              </button>
+            </form>
+          </>
+        )}
+      </div>
+    </main>
+  );
+}
+
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <label className="block">
+      <span className="mb-1.5 block text-sm font-medium text-foreground">{label}</span>
+      {children}
+    </label>
   );
 }
