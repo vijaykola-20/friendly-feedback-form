@@ -132,6 +132,48 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+:root {
+  --background: oklch(0.975 0.012 75);
+  --foreground: oklch(0.3 0.03 50);
+  --card: oklch(0.995 0.004 80);
+  --primary: oklch(0.68 0.11 25);
+  --primary-foreground: oklch(0.99 0.005 80);
+  --secondary: oklch(0.95 0.02 30);
+  --muted-foreground: oklch(0.52 0.025 50);
+  --accent: oklch(0.93 0.05 150);
+  --accent-foreground: oklch(0.42 0.08 150);
+  --border: oklch(0.91 0.015 60);
+  --input: oklch(0.91 0.015 60);
+  --ring: oklch(0.78 0.08 25);
+}
+
+@utility font-display {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+}
+@utility shadow-soft {
+  box-shadow: 0 20px 50px -20px color-mix(in oklab, var(--primary) 25%, transparent);
+}
+@utility support-bg {
+  background:
+    radial-gradient(circle at 15% 20%, oklch(0.93 0.05 150 / 0.6), transparent 45%),
+    radial-gradient(circle at 85% 80%, oklch(0.92 0.05 25 / 0.6), transparent 45%),
+    var(--background);
+}
+@utility field {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid var(--input);
+  background: var(--background);
+  padding: 0.75rem 1rem;
+  outline: none;
+  transition: box-shadow 0.15s, border-color 0.15s;
+  &:focus {
+    border-color: var(--ring);
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--ring) 30%, transparent);
+  }
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
@@ -140,5 +182,6 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: "Nunito Sans", system-ui, sans-serif;
   }
 }
