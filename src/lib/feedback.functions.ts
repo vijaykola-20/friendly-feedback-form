@@ -10,7 +10,7 @@ const schema = z.object({
 export const submitFeedback = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => schema.parse(data))
   .handler(async ({ data }) => {
-    const url = process.env.N8N_WEBHOOK_URL;
+    const url = process.env["N8N_WEBHOOK_URL"];
     if (!url) throw new Error("Webhook is not configured");
     const res = await fetch(url, {
       method: "POST",
