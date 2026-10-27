@@ -133,18 +133,19 @@
 }
 
 :root {
-  --background: oklch(0.975 0.012 75);
-  --foreground: oklch(0.3 0.03 50);
-  --card: oklch(0.995 0.004 80);
-  --primary: oklch(0.68 0.11 25);
-  --primary-foreground: oklch(0.99 0.005 80);
-  --secondary: oklch(0.95 0.02 30);
-  --muted-foreground: oklch(0.52 0.025 50);
-  --accent: oklch(0.93 0.05 150);
-  --accent-foreground: oklch(0.42 0.08 150);
-  --border: oklch(0.91 0.015 60);
-  --input: oklch(0.91 0.015 60);
-  --ring: oklch(0.78 0.08 25);
+  --background: oklch(0.965 0.02 95);
+  --foreground: oklch(0.32 0.04 145);
+  --card: oklch(0.99 0.006 90);
+  --primary: oklch(0.45 0.09 150);
+  --primary-foreground: oklch(0.98 0.01 95);
+  --secondary: oklch(0.93 0.03 90);
+  --secondary-foreground: oklch(0.4 0.06 145);
+  --muted-foreground: oklch(0.52 0.03 120);
+  --accent: oklch(0.9 0.06 145);
+  --accent-foreground: oklch(0.38 0.08 150);
+  --border: oklch(0.9 0.02 100);
+  --input: oklch(0.9 0.02 100);
+  --ring: oklch(0.6 0.09 150);
 }
 
 @utility font-display {
@@ -156,9 +157,13 @@
 }
 @utility support-bg {
   background:
-    radial-gradient(circle at 15% 20%, oklch(0.93 0.05 150 / 0.6), transparent 45%),
-    radial-gradient(circle at 85% 80%, oklch(0.92 0.05 25 / 0.6), transparent 45%),
+    radial-gradient(circle at 12% 15%, oklch(0.88 0.07 150 / 0.55), transparent 45%),
+    radial-gradient(circle at 88% 85%, oklch(0.9 0.06 60 / 0.5), transparent 45%),
+    radial-gradient(circle at 80% 10%, oklch(0.92 0.04 120 / 0.4), transparent 40%),
     var(--background);
+}
+@utility card-top-band {
+  background: linear-gradient(90deg, var(--primary), oklch(0.55 0.1 150));
 }
 @utility field {
   width: 100%;
