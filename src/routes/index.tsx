@@ -44,7 +44,9 @@ function Index() {
 
   return (
     <main className="support-bg flex min-h-screen items-center justify-center px-4 py-12">
-      <div className="w-full max-w-lg rounded-3xl bg-card p-8 shadow-soft sm:p-10">
+      <div className="w-full max-w-lg overflow-hidden rounded-3xl bg-card shadow-soft">
+        <div className="card-top-band h-2" />
+        <div className="p-8 sm:p-10">
         {status === "done" ? (
           <div className="py-8 text-center">
             <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-3xl text-accent-foreground">✓</div>
