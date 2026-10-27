@@ -6,10 +6,10 @@ import { submitFeedback } from "@/lib/feedback.functions";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Customer Support — We're here to help" },
-      { name: "description", content: "Send us your question or feedback and our support team will get back to you." },
-      { property: "og:title", content: "Customer Support — We're here to help" },
-      { property: "og:description", content: "Send us your question or feedback and our support team will get back to you." },
+      { title: "Neem Restaurant — Customer Feedback" },
+      { name: "description", content: "Share your dining experience with Neem Restaurant — we'd love to hear from you." },
+      { property: "og:title", content: "Neem Restaurant — Customer Feedback" },
+      { property: "og:description", content: "Share your dining experience with Neem Restaurant — we'd love to hear from you." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
@@ -56,12 +56,12 @@ function Index() {
           </div>
         ) : (
           <>
-            <h1 className="font-display text-4xl text-foreground">Customer Support</h1>
-            <p className="mt-2 text-muted-foreground">Got a question or a thought to share? We'd love to hear from you.</p>
+            <h1 className="font-display text-4xl text-foreground">Neem Restaurant</h1>
+            <p className="mt-2 text-muted-foreground">How was your visit? Share your feedback — we'd love to hear from you.</p>
             <form onSubmit={onSubmit} className="mt-8 space-y-5">
               <Field label="Your Name"><input name="name" required maxLength={100} className="field" /></Field>
               <Field label="Your Email"><input name="email" type="email" required maxLength={255} className="field" /></Field>
-              <Field label="How can we help? Describe your issue or feedback">
+              <Field label="Your feedback — tell us about your experience">
                 <textarea name="feedback" required rows={6} maxLength={5000} className="field resize-none" />
               </Field>
               {error && <p className="text-sm text-destructive">{error}</p>}
