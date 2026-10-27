@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { submitFeedback } from "@/lib/feedback.functions";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -44,6 +45,7 @@ function Index() {
 
   return (
     <main className="support-bg flex min-h-screen items-center justify-center px-4 py-12">
+      <ThemeToggle />
       <div className="w-full max-w-lg overflow-hidden rounded-3xl bg-card shadow-soft">
         <div className="card-top-band h-2" />
         <div className="p-8 sm:p-10">
@@ -71,7 +73,7 @@ function Index() {
               </Field>
               {error && <p className="text-sm text-destructive">{error}</p>}
               <button type="submit" disabled={status === "loading"} className="w-full rounded-2xl bg-primary py-3.5 font-semibold text-primary-foreground transition hover:opacity-90 disabled:opacity-60">
-                {status === "loading" ? "Sending…" : "Send feedback"}
+                {status === "loading" ? "Sending…" : "Submit"}
               </button>
             </form>
           </>
