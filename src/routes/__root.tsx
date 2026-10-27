@@ -98,6 +98,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap",
       },
     ],
+    scripts: [
+      {
+        children:
+          'try{if(localStorage.getItem("neem-theme")==="dark")document.documentElement.classList.add("dark")}catch(e){}',
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
