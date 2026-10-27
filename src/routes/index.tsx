@@ -49,7 +49,7 @@ function Index() {
         <div className="p-8 sm:p-10">
         {status === "done" ? (
           <div className="py-8 text-center">
-            <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-3xl text-accent-foreground">🌿</div>
+            <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-saffron/20 text-3xl text-saffron-foreground">🌿</div>
             <h1 className="font-display text-3xl text-foreground">Thank you!</h1>
             <p className="mt-3 text-muted-foreground">Thanks for dining with us — we've received your feedback and will be in touch soon.</p>
             <button onClick={() => setStatus("idle")} className="mt-8 rounded-full px-5 py-2 text-sm font-medium text-primary hover:bg-secondary">
@@ -59,7 +59,7 @@ function Index() {
         ) : (
           <>
             <div className="flex items-center gap-3">
-              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-accent text-2xl">🌿</span>
+              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-accent text-2xl ring-1 ring-saffron/40">🌿</span>
               <h1 className="font-display text-4xl text-foreground">Neem Restaurant</h1>
             </div>
             <p className="mt-3 text-muted-foreground">How was your visit? Share your feedback — we'd love to hear from you.</p>

@@ -59,6 +59,8 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-saffron: var(--saffron);
+  --color-saffron-foreground: var(--saffron-foreground);
 }
 
 :root {
@@ -133,37 +135,40 @@
 }
 
 :root {
-  --background: oklch(0.965 0.02 95);
-  --foreground: oklch(0.32 0.04 145);
-  --card: oklch(0.99 0.006 90);
-  --primary: oklch(0.45 0.09 150);
-  --primary-foreground: oklch(0.98 0.01 95);
-  --secondary: oklch(0.93 0.03 90);
-  --secondary-foreground: oklch(0.4 0.06 145);
-  --muted-foreground: oklch(0.52 0.03 120);
-  --accent: oklch(0.9 0.06 145);
-  --accent-foreground: oklch(0.38 0.08 150);
-  --border: oklch(0.9 0.02 100);
-  --input: oklch(0.9 0.02 100);
-  --ring: oklch(0.6 0.09 150);
+  --background: oklch(0.972 0.019 88);
+  --foreground: oklch(0.3 0.045 152);
+  --card: oklch(0.995 0.006 88);
+  --primary: oklch(0.42 0.105 152);
+  --primary-foreground: oklch(0.985 0.008 95);
+  --secondary: oklch(0.935 0.028 92);
+  --secondary-foreground: oklch(0.38 0.06 148);
+  --muted-foreground: oklch(0.51 0.032 128);
+  --accent: oklch(0.915 0.055 100);
+  --accent-foreground: oklch(0.4 0.09 150);
+  --border: oklch(0.905 0.022 96);
+  --input: oklch(0.905 0.022 96);
+  --ring: oklch(0.56 0.105 152);
+  --saffron: oklch(0.74 0.15 72);
+  --saffron-foreground: oklch(0.35 0.07 70);
 }
 
 @utility font-display {
-  font-family: "Fraunces", Georgia, serif;
-  font-weight: 600;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0.005em;
 }
 @utility shadow-soft {
   box-shadow: 0 20px 50px -20px color-mix(in oklab, var(--primary) 25%, transparent);
 }
 @utility support-bg {
   background:
-    radial-gradient(circle at 12% 15%, oklch(0.88 0.07 150 / 0.55), transparent 45%),
-    radial-gradient(circle at 88% 85%, oklch(0.9 0.06 60 / 0.5), transparent 45%),
-    radial-gradient(circle at 80% 10%, oklch(0.92 0.04 120 / 0.4), transparent 40%),
+    radial-gradient(circle at 12% 15%, oklch(0.88 0.075 152 / 0.55), transparent 45%),
+    radial-gradient(circle at 88% 85%, oklch(0.89 0.08 78 / 0.55), transparent 45%),
+    radial-gradient(circle at 80% 10%, oklch(0.92 0.045 118 / 0.4), transparent 40%),
     var(--background);
 }
 @utility card-top-band {
-  background: linear-gradient(90deg, var(--primary), oklch(0.55 0.1 150));
+  background: linear-gradient(90deg, var(--primary), var(--saffron));
 }
 @utility field {
   width: 100%;
@@ -187,6 +192,6 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: "Nunito Sans", system-ui, sans-serif;
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
   }
 }
