@@ -150,6 +150,39 @@
   --ring: oklch(0.56 0.105 152);
   --saffron: oklch(0.74 0.15 72);
   --saffron-foreground: oklch(0.35 0.07 70);
+  --glow-1: oklch(0.88 0.075 152 / 0.55);
+  --glow-2: oklch(0.89 0.08 78 / 0.55);
+  --glow-3: oklch(0.92 0.045 118 / 0.4);
+  color-scheme: light;
+}
+
+/* Dark mode: deep neem night, same cream + saffron accents */
+.dark {
+  --background: oklch(0.235 0.032 158);
+  --foreground: oklch(0.95 0.018 92);
+  --card: oklch(0.29 0.036 158);
+  --card-foreground: oklch(0.95 0.018 92);
+  --popover: oklch(0.29 0.036 158);
+  --popover-foreground: oklch(0.95 0.018 92);
+  --primary: oklch(0.74 0.12 152);
+  --primary-foreground: oklch(0.2 0.045 158);
+  --secondary: oklch(0.35 0.04 155);
+  --secondary-foreground: oklch(0.93 0.02 92);
+  --muted: oklch(0.35 0.04 155);
+  --muted-foreground: oklch(0.78 0.028 120);
+  --accent: oklch(0.37 0.05 152);
+  --accent-foreground: oklch(0.95 0.018 92);
+  --destructive: oklch(0.68 0.19 25);
+  --destructive-foreground: oklch(0.97 0.01 92);
+  --border: oklch(0.42 0.038 154);
+  --input: oklch(0.42 0.038 154);
+  --ring: oklch(0.74 0.11 152);
+  --saffron: oklch(0.78 0.14 74);
+  --saffron-foreground: oklch(0.85 0.11 78);
+  --glow-1: oklch(0.42 0.09 152 / 0.5);
+  --glow-2: oklch(0.45 0.1 74 / 0.4);
+  --glow-3: oklch(0.38 0.06 120 / 0.35);
+  color-scheme: dark;
 }
 
 @utility font-display {
@@ -162,9 +195,9 @@
 }
 @utility support-bg {
   background:
-    radial-gradient(circle at 12% 15%, oklch(0.88 0.075 152 / 0.55), transparent 45%),
-    radial-gradient(circle at 88% 85%, oklch(0.89 0.08 78 / 0.55), transparent 45%),
-    radial-gradient(circle at 80% 10%, oklch(0.92 0.045 118 / 0.4), transparent 40%),
+    radial-gradient(circle at 12% 15%, var(--glow-1), transparent 45%),
+    radial-gradient(circle at 88% 85%, var(--glow-2), transparent 45%),
+    radial-gradient(circle at 80% 10%, var(--glow-3), transparent 40%),
     var(--background);
 }
 @utility card-top-band {
